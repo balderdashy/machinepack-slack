@@ -54,7 +54,7 @@ module.exports = {
 
     slack.webhook({
       channel: inputs.channel || "#general",
-      username: inputs.username || 'machine',
+      username: inputs.username || 'machinepack-slack',
       text: inputs.message||'Hello world!  Posted from the `post-to-channel` machine in `machinepack-slack`.'
     }, function(err, response) {
       if (err) return exits.error(err);
