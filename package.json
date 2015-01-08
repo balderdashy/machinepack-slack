@@ -10,7 +10,11 @@
     "machines",
     "machinepack"
   ],
-  "author": "",
+  "author": "Mike McNeil <mikermcneil>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/balderdashy/machinepack-slack.git"
+  },
   "license": "MIT",
   "dependencies":{
     "machine": "^1.1.0"
