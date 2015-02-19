@@ -14,7 +14,7 @@ module.exports = {
     },
     webhookToken: {
       description: 'A Slack webhook token',
-      example: 'T23GPA913932B032/131BAZF1013GJ291',
+      example: 'XLwUYCLQsA4PXysVkO7cWWQp',
       required: true,
       whereToGet: {
         url: 'https://slack.com/services/new/incoming-webhook',
