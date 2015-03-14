@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "machine": "^1.1.0",
-    "slack-node": "0.0.93"
+    "slack-node": "~0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.1.0"
