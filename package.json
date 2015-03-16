@@ -24,6 +24,7 @@
     "mocha": "^2.1.0"
   },
   "machinepack": {
+    "iconSrc": "https://s3-us-west-1.amazonaws.com/machinepack-icons/machinepack_slack.png",
     "friendlyName": "Slack",
     "machineDir": "machines/",
     "machines": [
