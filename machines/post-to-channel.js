@@ -22,18 +22,25 @@ module.exports = {
     channel: {
       description: 'The Slack channel where the post should be sent',
       example: '#general',
-      friendlyName: "Channel"
+      friendlyName: "Channel",
+      required: true
     },
     message: {
       description: 'The message to post',
       example: 'Good morning, boys and girls!',
-      friendlyName: "Message"
+      friendlyName: "Message",
+      required: true
     },
     iconEmoji: {
       example: ':ghost:',
       friendlyName: 'Icon Emoji',
       description: "The bot icon to display next to the post.",
       whereToGet: "http://www.emoji-cheat-sheet.com/"
+    },
+    linkNames: {
+      example: true,
+      friendlyName: 'Link names?',
+      description: 'Whether or not create links out of channel names and usernames'
     }
   },
   defaultExit: 'success',
@@ -49,25 +56,22 @@ module.exports = {
     }
   },
   fn: function(inputs, exits) {
-    var Slack = require('slack-node');
 
-    var slack = new Slack();
-    slack.setWebhook(inputs.webhookUrl);
-
-    slack.webhook({
-      channel: inputs.channel || "#general",
-      username: inputs.username || 'machinepack-slack',
-      icon_emoji: inputs.iconEmoji,
-      text: inputs.message||'Hello world!  Posted from the `post-to-channel` machine in `machinepack-slack`.'
-    }, function(err, response) {
-      if (err) return exits.error(err);
-      if (response.statusCode === 404) {
-        return exits.notFound();
+    var Http = require('machinepack-http');
+    Http.sendHttpRequest({
+      url: inputs.webhookUrl,
+      method: 'post',
+      params: {
+        channel: inputs.channel,
+        text: inputs.message,
+        link_names: inputs.linkNames ? 1 : 0,
+        icon_emoji: inputs.iconEmoji,
+        username: inputs.username
       }
-      if (response.statusCode < 200 || response.statusCode >= 400){
-        return exits.error(err);
-      }
-      return exits.success();
+    }).exec({
+      success: exits.success,
+      notFound: exits.notFound,
+      error: exits.error
     });
   },
 
