@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "machine": "^1.1.0",
+    "machine": "^10.0.0",
     "machinepack-http": "^2.3.0"
   },
   "devDependencies": {
