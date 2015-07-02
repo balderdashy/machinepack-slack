@@ -1,6 +1,6 @@
 {
   "name": "machinepack-slack",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Use the Slack API via Node machines.",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha -b"
